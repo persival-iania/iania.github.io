@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Desmistificando o mundo de dados</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: sans-serif;
+        text-align: center;
+      }
+      
+      #logo {
+        margin: 50px auto;
+        max-width: 200px;
+      }
+      
+      form {
+        margin: 50px auto;
+        max-width: 400px;
+        text-align: left;
+      }
+      
+      input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      
+      input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+      
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Desmistificando o mundo de dados</h1>
+    <img id="logo" src="logo.png" alt="Logo">
+    <p>Big Data Analytics, Engenharia de Dados, Business Intelligence, DataOps, Machine Learning, AI, MLOps, AIOps e integração diversa de dados</p>
+    <form action="mailto:contato@iania.com.br" method="post" enctype="text/plain">
+      <label for="name">Nome:</label><br>
+      <input type="text" id="name" name="name" required><br>
+      <label for="subject">Assunto:</label><br>
+      <select id="subject" name="subject">
+        <option value="big-data-analytics">Big Data Analytics</option>
+        <option value="engenharia-de-dados">Engenharia de Dados</option>
+        <option value="business-intelligence">Business Intelligence</option>
+        <option value="dataops">DataOps</option>
+        <option value="machine-learning">Machine Learning</option>
+        <option value="ai">AI</option>
+        <option value="mlops">MLOps</option>
+        <option value="aiops">AIOps</option>
+        <option value="integracao-de-dados">Integração diversa de dados</option>
+      </select><br>
+      <label for="email">E-mail:</label><br>
+      <input type="text" id="email" name="email" required><br>
+      <input type="submit" value="Enviar">
+    </form>
+    <script>
+      var form = document.querySelector('form');
+      form.addEventListener('submit', function(event) {
+  var emailInput = document.querySelector('#email');
+  if (!isValidEmail(emailInput.value)) {
+    event.preventDefault();
+    var errorText = document.createElement('p');
+    errorText.classList.add('error');
+    errorText.textContent = 'Por favor, insira um e-mail válido.';
+    form.insertBefore(errorText, emailInput.nextSibling);
+  }
+});
+
+function isValidEmail(email) {
+  var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+</script>
+</body>
+</html>
