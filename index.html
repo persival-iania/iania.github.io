@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Desmistificando o mundo de dados</title>
+    <meta charset="UTF-8">
     <style>
       body {
         background-color: black;
@@ -21,7 +22,7 @@
         text-align: left;
       }
       
-      input[type=text], select {
+      input[type=text], select, input[type=email] {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;
@@ -55,7 +56,7 @@
     <h1>Desmistificando o mundo de dados</h1>
     <img id="logo" src="logo.png" alt="Logo">
     <p>Big Data Analytics, Engenharia de Dados, Business Intelligence, DataOps, Machine Learning, AI, MLOps, AIOps e integração diversa de dados</p>
-    <form action="mailto:contato@iania.com.br" method="post" enctype="text/plain">
+    <form action="mailto:contato@iania.com.br" method="post">
       <label for="name">Nome:</label><br>
       <input type="text" id="name" name="name" required><br>
       <label for="subject">Assunto:</label><br>
@@ -71,26 +72,25 @@
         <option value="integracao-de-dados">Integração diversa de dados</option>
       </select><br>
       <label for="email">E-mail:</label><br>
-      <input type="text" id="email" name="email" required><br>
-      <input type="submit" value="Enviar">
+      <input type="email" id="email" name="email" required><br>
+      <input type="submit" value="Enviar" onclick="validateForm()">
     </form>
     <script>
-      var form = document.querySelector('form');
-      form.addEventListener('submit', function(event) {
-  var emailInput = document.querySelector('#email');
-  if (!isValidEmail(emailInput.value)) {
-    event.preventDefault();
-    var errorText = document.createElement('p');
-    errorText.classList.add('error');
-    errorText.textContent = 'Por favor, insira um e-mail válido.';
-    form.insertBefore(errorText, emailInput.nextSibling);
-  }
-});
+      function validateForm() {
+        var emailInput = document.querySelector('#email');
+        if (!isValidEmail(emailInput.value)) {
+          var errorText = document.createElement('p');
+          errorText.classList.add('error');
+          errorText.textContent = 'Por favor, insira um e-mail válido.';
+          form.insertBefore(errorText, emailInput.nextSibling);
+          return false;
+        }
+      }
 
-function isValidEmail(email) {
-  var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
-}
-</script>
-</body>
+      function isValidEmail(email) {
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+     }
+    </script>
+  </body>
 </html>
